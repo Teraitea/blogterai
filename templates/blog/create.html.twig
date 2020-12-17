@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme articleForm 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+
+    {% if editMode %}
+        <h1>Modification d'un article</h1>
+    {% else %}
+        <h1>Création d'un article</h1>
+    {% endif %}
+    {{ form_start(articleForm) }}
+    {{ form_row(articleForm.title, {'attr': {'placeholder': "Titre de l'article"}}) }}
+    {{ form_row(articleForm.content, {'attr': {'placeholder': "Contenu de l'article"}}) }}
+    {{ form_row(articleForm.image, {'attr': {'placeholder': "URL de l'image"}}) }}
+    
+    {% if editMode %}
+        <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+    {% else %}
+        <button type="submit" class="btn btn-success">Ajouter l'article</button>
+    {% endif %}
+        {{ form_end(articleForm) }}
+
+{% endblock %}
